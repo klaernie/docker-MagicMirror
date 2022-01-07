@@ -26,3 +26,6 @@ jobs:
           # the standard config conflicts heavily with the upstream config.js
           # hence I opted to disable it
           VALIDATE_JAVASCRIPT_STANDARD: false
+          # the klaernie example k8s deployment has duplicated segments on purpose (same filter for two seperate calendars, in two config instances).
+          # JSCPD detects these, but they are unavoidable
+          VALIDATE_JSCPD: false
