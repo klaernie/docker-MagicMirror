@@ -45,7 +45,7 @@ Environment variables can be passed to the docker container using the `--env` fl
 | --- | --- |
 | `/opt/magic_mirror/config` | Mount this folder to insert your own config into the docker container. If the folder is empty the container will create a default configuration which can be adapted to you likings. |
 | `/opt/magic_mirror/modules` | Mount this folder to add your own custom modules into the docker container. If the folder is empty the container will copy the [default modules](https://github.com/MichMich/MagicMirror/tree/master/modules/default) from the MagicMirror² repository into the volume. |
-| `/opt/magic_mirror/css/custom.css` | Mount this file to add your own custom css into the docker container. <br><br> **Important:** You need to create the file before you run the container. Otherwise Docker will create a `custom.css` folder. |
+| `/opt/magic_mirror/css/custom.css` | Mount this file to add your own custom CSS into the docker container. <br><br> **Important:** You need to create the file before you run the container. Otherwise Docker will create a `custom.css` folder. |
 | `/etc/localtime:/etc/localtime:ro` | Add this to syncronize the time of the host with the docker container. <br><br> **Important:** This is for linux hosts. If you run your docker on other OS, you will need to change this. |
 
 # Build arguments

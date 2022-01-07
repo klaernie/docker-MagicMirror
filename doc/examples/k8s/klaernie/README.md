@@ -30,7 +30,7 @@ So the plan is as following:
 - To feed the calendar data in, use a NFS-Share from my server. I did not what to wrap my working vdirsyncer setup in a container yet, so that's the easiest way.
 - To store the modules I also used the NFS-Share
 
-Besides this document you find the exact version (okay, the weather api key is missing ;) ) of the yaml files I used to deploy everything.
+Besides this document you find the exact version (okay, the weather API key is missing ;) ) of the yaml files I used to deploy everything.
 
 To set everything up I did the following:
 - setup an NFS export on my server (it's `hive.ak-online.be:/volumes/k8s/magic-mirror`) accessible to my local network
