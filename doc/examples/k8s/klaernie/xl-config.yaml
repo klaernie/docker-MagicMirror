@@ -7,9 +7,11 @@ data:
             ipWhitelist: [],
 
             language: "en",
+            locale: "en-US",
             timeFormat: 24,
             units: "metric",
             timezone: "Europe/Berlin",
+            logLevel: ["INFO", "LOG", "WARN", "ERROR"], // Add "DEBUG" for even more logging
 
             modules: [
                     {
@@ -29,9 +31,11 @@ data:
                             }
                     },
                     {
-                            module: "currentweather",
+                            module: "weather",
                             position: "top_right",
                             config: {
+                                    type: "current",
+                                    weatherProvider: "openweathermap",
                                     location: "Dresden, Germany",
                                     locationID: "2935022",  //ID from http://bulk.openweathermap.org/sample/; unzip the gz file and find your city
                                     appid: "actually not an API key"
@@ -115,13 +119,21 @@ data:
                                                     hideOverflow: false,
                                                     filterPassedEvent: true,
                                                     calendars: [
-                                                            "Anja",
                                                             "Andre",
-                                                            "Tobi",
+                                                            "Anja",
                                                             "Tobi Shared",
-                                                            "Anja|Andre|Tobi|Tobi Shared", "Anja|Andre|Tobi Shared|Tobi", "Anja|Tobi|Andre|Tobi Shared", "Anja|Tobi|Tobi Shared|Andre", "Anja|Tobi Shared|Andre|Tobi", "Anja|Tobi Shared|Tobi|Andre", "Andre|Anja|Tobi Shared|Tobi", "Andre|Anja|Tobi|Tobi Shared", "Andre|Tobi|Tobi Shared|Anja", "Andre|Tobi|Anja|Tobi Shared", "Andre|Tobi Shared|Tobi|Anja", "Andre|Tobi Shared|Anja|Tobi", "Tobi|Anja|Andre|Tobi Shared", "Tobi|Anja|Tobi Shared|Andre", "Tobi|Andre|Anja|Tobi Shared", "Tobi|Andre|Tobi Shared|Anja", "Tobi|Tobi Shared|Anja|Andre", "Tobi|Tobi Shared|Andre|Anja", "Tobi Shared|Anja|Tobi|Andre", "Tobi Shared|Anja|Andre|Tobi", "Tobi Shared|Andre|Tobi|Anja", "Tobi Shared|Andre|Anja|Tobi", "Tobi Shared|Tobi|Andre|Anja", "Tobi Shared|Tobi|Anja|Andre",
-                                                            "Anja|Andre|Tobi", "Anja|Andre|Tobi Shared", "Anja|Tobi|Andre", "Anja|Tobi|Tobi Shared", "Anja|Tobi Shared|Andre", "Anja|Tobi Shared|Tobi", "Andre|Anja|Tobi Shared", "Andre|Anja|Tobi", "Andre|Tobi|Tobi Shared", "Andre|Tobi|Anja", "Andre|Tobi Shared|Tobi", "Andre|Tobi Shared|Anja", "Tobi|Anja|Andre", "Tobi|Anja|Tobi Shared", "Tobi|Andre|Anja", "Tobi|Andre|Tobi Shared", "Tobi|Tobi Shared|Anja", "Tobi|Tobi Shared|Andre", "Tobi Shared|Anja|Tobi", "Tobi Shared|Anja|Andre", "Tobi Shared|Andre|Tobi", "Tobi Shared|Andre|Anja", "Tobi Shared|Tobi|Andre", "Tobi Shared|Tobi|Anja",
-                                                            "Anja|Andre", "Anja|Tobi", "Anja|Tobi Shared", "Andre|Anja", "Andre|Tobi", "Andre|Tobi Shared", "Tobi|Anja", "Tobi|Andre", "Tobi|Tobi Shared", "Tobi Shared|Anja", "Tobi Shared|Andre", "Tobi Shared|Tobi",
+                                                            "Tobi",
+                                                            "Andre|Anja",
+                                                            "Andre|Anja|Tobi Shared",
+                                                            "Andre|Anja|Tobi Shared|Tobi",
+                                                            "Andre|Anja|Tobi",
+                                                            "Andre|Tobi Shared",
+                                                            "Andre|Tobi Shared|Tobi",
+                                                            "Andre|Tobi",
+                                                            "Anja|Tobi Shared",
+                                                            "Anja|Tobi Shared|Tobi",
+                                                            "Anja|Tobi",
+                                                            "Tobi|Tobi Shared",
                                                     ],
                                             },
                                             {
@@ -134,7 +146,7 @@ data:
                                                     locale: "en",
                                                     hideOverflow: false,
                                                     filterPassedEvent: true,
-                                                    calendars: ["Anja Work","Andre Work","Anja Work|Andre Work","Andre Work|Anja Work"],
+                                                    calendars: ["Anja Work","Andre Work","Andre Work|Anja Work","Tobi Lernsax"],
                                             },
                                     ],
                                     calendars: [
@@ -207,6 +219,10 @@ data:
                                                     name: "Tobi Shared",
                                                     url: "http://calserv/TobiShared.ics",
                                             },
+                                            {
+                                                    name: "Tobi Lernsax",
+                                                    url: "http://calserv/Lernsax.ics",
+                                            },
                                     ],
                             },
                     },
@@ -268,7 +284,8 @@ data:
      *****************************************************/
 
     html {
-          background: #141619;
+            background: #141619;
+            cursor: auto;
     }
 
     body {
@@ -282,6 +299,22 @@ data:
     .region.top.left,
     .region.top.center {
             min-width: 700px;
+    }
+
+    .region.top.left .CX2 {
+            --column-max-width: 700px;
+    }
+
+    .region.top.left .CX2 .period .eventTitle {
+    }
+
+    .CX2 .period .eventTitle {
+            float: left;
+            max-width: var(--column-max-width);
+    }
+
+    .CX2 .period .eventTime {
+            float: right;
     }
 
     .CX2 .current .eventCount_0 {
@@ -334,9 +367,26 @@ data:
             border-left: #c632ff solid;
     }
     .CX2 .event[data-calendar-name="Tobi"],
+    .CX2 .event[data-calendar-name="Tobi Lernsax"],
     .CX2 .event[data-calendar-name="Tobi Shared"] {
             /*color: #d2cf2a;*/
             border-left: #d2cf2a solid;
+    }
+
+    .CX2 .event[data-busystatus="BUSY"] .eventTitle {
+            /* color: #c632ff; */
+    }
+
+    .CX2 .event[data-busystatus="OOF"] .eventTitle {
+            color: #400c54;
+    }
+
+    .CX2 .event[data-busystatus="FREE"] .eventTitle {
+            /* color: #444444; */
+    }
+
+    .CX2 .event[data-busystatus="TENTATIVE"] .eventTitle {
+            color: #444444;
     }
 
     /* GooglePhotos */
