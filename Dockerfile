@@ -12,13 +12,13 @@ ENV NODE_ENV production
 WORKDIR /opt/magic_mirror
 
 RUN set -x \
-    && echo "cloning MagicMirror"
+    && echo "cloning MagicMirror" \
     && git clone --depth 1 -b ${branch} https://github.com/MichMich/MagicMirror.git . \
-    && echo "copying stock modules to /opt"
+    && echo "copying stock modules to /opt" \
     && cp -R modules /opt/default_modules \
-    && echo "copying stock config to /opt"
+    && echo "copying stock config to /opt" \
     && cp -R config /opt/default_config \
-    && echo "installing dependencies"
+    && echo "installing dependencies" \
     && npm install --no-fund --no-audit --unsafe-perm --silent
 
 COPY mm-docker-config.js docker-entrypoint.sh ./
