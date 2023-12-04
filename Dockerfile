@@ -11,7 +11,8 @@ ARG branch=master
 ENV NODE_ENV production
 WORKDIR /opt/magic_mirror
 
-RUN git clone --depth 1 -b ${branch} https://github.com/MichMich/MagicMirror.git . \
+RUN set -x \
+    && git clone --depth 1 -b ${branch} https://github.com/MichMich/MagicMirror.git . \
     && cp -R modules /opt/default_modules \
     && cp -R config /opt/default_config \
     && npm install --no-fund --no-audit --unsafe-perm --silent
