@@ -1,4 +1,4 @@
-FROM node:18-buster
+FROM node:20-buster
 
 # hadolint ignore=DL3008
 RUN set -e; \
