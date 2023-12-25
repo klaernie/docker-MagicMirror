@@ -7,4 +7,6 @@ if [ "$(DOCKER_CLI_EXPERIMENTAL=enabled docker manifest inspect ghcr.io/klaernie
   docker buildx build --progress plain --platform=linux/amd64,linux/arm64,linux/arm/v7 "${1}" --build-arg branch="${latest_release}" -t ghcr.io/klaernie/docker-magicmirror:"${latest_release}" -t ghcr.io/klaernie/docker-magicmirror:latest .
 fi
 
-docker buildx build --progress plain --platform=linux/amd64,linux/arm64,linux/arm/v7 "${1}" --build-arg branch=develop -t ghcr.io/klaernie/docker-magicmirror:develop .
+docker buildx build --progress plain --platform=linux/amd64 "${1}" --build-arg branch=develop -t ghcr.io/klaernie/docker-magicmirror:develop .
+docker buildx build --progress plain --platform=linux/arm64 "${1}" --build-arg branch=develop -t ghcr.io/klaernie/docker-magicmirror:develop .
+docker buildx build --progress plain --platform=linux/arm/v7 "${1}" --build-arg branch=develop -t ghcr.io/klaernie/docker-magicmirror:develop .
