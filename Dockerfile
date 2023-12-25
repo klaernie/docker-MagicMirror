@@ -19,7 +19,7 @@ RUN set -x \
     && echo "copying stock config to /opt" \
     && cp -R config /opt/default_config \
     && echo "installing dependencies" \
-    && npm install --no-fund --no-audit --unsafe-perm
+    && npm install --no-fund --no-audit --unsafe-perm --no-update-notifier
 
 COPY mm-docker-config.js docker-entrypoint.sh ./
 
