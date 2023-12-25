@@ -2,7 +2,11 @@ name: Docker
 
 on:
   push:
+    branches:
+      - main
   pull_request:
+    branches:
+      - main
   schedule:
     - cron: "17 3 * * *"
   workflow_dispatch:
@@ -23,6 +27,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
+        if: github.actor == github.repository_owner
       - name: Docker Build and Push
         if: steps.docker-login.outcome == 'success'
         run: ./build.sh "--push"
