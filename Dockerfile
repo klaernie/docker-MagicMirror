@@ -13,7 +13,7 @@ WORKDIR /opt/magic_mirror
 
 RUN set -x \
     && echo "cloning MagicMirror" \
-    && git clone --depth 1 -b ${branch} https://github.com/MichMich/MagicMirror.git . \
+    && git clone --depth 1 -b ${branch} https://github.com/MagicMirrorOrg/MagicMirror.git . \
     && echo "copying stock modules to /opt" \
     && cp -R modules /opt/default_modules \
     && echo "copying stock config to /opt" \

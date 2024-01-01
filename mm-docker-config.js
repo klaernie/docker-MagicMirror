@@ -4,7 +4,7 @@
  * MIT Licensed.
  *
  * For more information how you can configurate this file
- * See https://github.com/MichMich/MagicMirror#configuration
+ * See https://github.com/MagicMirrorOrg/MagicMirror#configuration
  *
  */
 

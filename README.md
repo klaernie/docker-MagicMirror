@@ -1,5 +1,5 @@
 <!-- markdownlint-disable-next-line MD041 -->
-[![MagicMirror²: The open source modular smart mirror platform.](https://github.com/MichMich/MagicMirror/raw/master/.github/header.png)](https://github.com/MichMich/MagicMirror)
+[![MagicMirror²: The open source modular smart mirror platform.](https://github.com/MagicMirrorOrg/MagicMirror/raw/master/.github/header.png)](https://github.com/MagicMirrorOrg/MagicMirror)
 
 **MagicMirror²** is an open source modular smart mirror platform. With a growing list of installable modules, the **MagicMirror²** allows you to convert your hallway or bathroom mirror into your personal assistant.
 
@@ -9,9 +9,9 @@ In some cases, you want to start the application without an actual app window. I
 
 # Tags
 
-- `latest` - The [latest stable release](https://github.com/MichMich/MagicMirror/releases/latest) of MagicMirror.
-- `develop` - Image based on the [`develop`](https://github.com/MichMich/MagicMirror/tree/develop) branch.
-- `vX.Y.Z`- Specific MagicMirror release. Take a look at the [releases](https://github.com/MichMich/MagicMirror/releases) page in the MagicMirror repository to get the correct version number.
+- `latest` - The [latest stable release](https://github.com/MagicMirrorOrg/MagicMirror/releases/latest) of MagicMirror.
+- `develop` - Image based on the [`develop`](https://github.com/MagicMirrorOrg/MagicMirror/tree/develop) branch.
+- `vX.Y.Z`- Specific MagicMirror release. Take a look at the [releases](https://github.com/MagicMirrorOrg/MagicMirror/releases) page in the MagicMirror repository to get the correct version number.
 
 > The respective docker images are getting updated daily by a GitHub Actions cron job.
 
@@ -42,7 +42,7 @@ Environment variables can be passed to the docker container using the `--env` fl
 | **Volume** | **Description** |
 | --- | --- |
 | `/opt/magic_mirror/config` | Mount this folder to insert your own config into the docker container. If the folder is empty the container will create a default configuration which can be adapted to you likings. |
-| `/opt/magic_mirror/modules` | Mount this folder to add your own custom modules into the docker container. If the folder is empty the container will copy the [default modules](https://github.com/MichMich/MagicMirror/tree/master/modules/default) from the MagicMirror² repository into the volume. |
+| `/opt/magic_mirror/modules` | Mount this folder to add your own custom modules into the docker container. If the folder is empty the container will copy the [default modules](https://github.com/MagicMirrorOrg/MagicMirror/tree/master/modules/default) from the MagicMirror² repository into the volume. |
 | `/opt/magic_mirror/css/custom.css` | Mount this file to add your own custom CSS into the docker container. <br><br> **Important:** You need to create the file before you run the container. Otherwise Docker will create a `custom.css` folder. |
 | `/etc/localtime:/etc/localtime:ro` | Add this to syncronize the time of the host with the docker container. <br><br> **Important:** This is for linux hosts. If you run your docker on other OS, you will need to change this. |
 
@@ -50,7 +50,7 @@ Environment variables can be passed to the docker container using the `--env` fl
 
 | **Build variable** | **Description** |
 | --- | --- |
-| `branch` | Specify a branch or tag of the [MagicMirror repository](https://github.com/MichMich/MagicMirror) which should be used for building the image. Default: `master` |
+| `branch` | Specify a branch or tag of the [MagicMirror repository](https://github.com/MagicMirrorOrg/MagicMirror) which should be used for building the image. Default: `master` |
 
 # Config
 
