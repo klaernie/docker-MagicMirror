@@ -8,7 +8,7 @@ RUN set -e; \
 
 ARG branch=master
 
-ENV NODE_ENV production
+ENV NODE_ENV=production
 WORKDIR /opt/magic_mirror
 
 RUN set -x \
