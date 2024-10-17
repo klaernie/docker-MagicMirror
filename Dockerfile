@@ -1,4 +1,4 @@
-FROM node:22-bookworm
+FROM node:23-bookworm
 
 # hadolint ignore=DL3008
 RUN set -e; \
